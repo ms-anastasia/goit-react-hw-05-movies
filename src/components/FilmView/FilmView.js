@@ -1,35 +1,26 @@
-const FilmView = ({ movies, onClick, error }) => {
-  return (
-    <div>
-      <ul>
-        {movies.map((movie) => {
-          let imgUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+import { useLocation, Link } from "react-router-dom";
+import {  FilmGallery, ListItem, GalleryImage, FilmTitle } from "./FilmView.styled";
 
-          return (
-            <li key={movie.id}>
-              <link to={`${movie.id}`}>
-                <div>
-                  <img src={imgUrl} alt={movie.original_title} />
-                </div>
-                <div>
-                  {movie.original_title && (
-                    <p>{movie.original_title}</p>
-                  )}
-                  <p>{movie.original_name}</p>
-                  <p>{movie.vote_average}</p>
-                </div>
-              </link>
-            </li>
-          );
-        })}
-      </ul>
-      
-        <div>
-          <button type="button" onClick={onClick}>
-            Load more...
-          </button>
-        </div>
-    </div>
+const FilmView = ({ films }) => {
+  const location = useLocation();
+
+  return (
+    <>
+      <FilmGallery>
+        {films &&
+          films.map(({ id, title, poster_path }) => (
+            <Link to={`/movies/${id}`} state={{ from: location }} key={id}>
+              <ListItem key={id}>
+                <GalleryImage
+                  src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                  alt={title}
+                />
+                <FilmTitle>{title}</FilmTitle>
+              </ListItem>
+            </Link>
+          ))}
+      </FilmGallery>
+    </>
   );
 };
 export default FilmView;

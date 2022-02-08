@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import fetchPopularFilms from "../../services/api";
+import { fetchPopularFilms } from "../../services/api";
+import FilmView from "../FilmView/FilmView";
+import { GalleryHeader } from "../FilmView/FilmView.styled";
 
 const Homepage = () => {
   const [popularfilms, setPopularFilms] = useState([]);
@@ -14,6 +16,11 @@ const Homepage = () => {
       setPopularFilms((state) => [...state, ...data.results])
     );
   }, [page]);
-  return <MoviesView movies={popularMovies} onClick={onLoadMoreClick} />;
+  return ( 
+    <>
+  <GalleryHeader>Trending Movies</GalleryHeader>
+      <FilmView films={popularfilms} onClick={onLoadMoreClick} />;
+      </>
+  )
 };
 export default Homepage;
