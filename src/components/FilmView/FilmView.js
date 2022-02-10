@@ -1,5 +1,10 @@
 import { useLocation, Link } from "react-router-dom";
-import {  FilmGallery, ListItem, GalleryImage, FilmTitle } from "./FilmView.styled";
+import {
+  FilmGallery,
+  ListItem,
+  GalleryImage,
+  FilmTitle,
+} from "./FilmView.styled";
 
 const FilmView = ({ films }) => {
   const location = useLocation();

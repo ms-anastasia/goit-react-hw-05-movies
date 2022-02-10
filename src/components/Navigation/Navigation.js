@@ -5,14 +5,14 @@ const Navigation = () => (
   <nav>
     <NavigationLink
       to="/"
-      style={({ isActive }) => ({ color: isActive ? "red" : "blue" })}
+      className={({ isActive }) => (isActive ? " active" : "")}
     >
       Homepage
     </NavigationLink>
 
     <NavigationLink
       to="/movies"
-      style={({ isActive }) => ({ color: isActive ? "red" : "blue" })}
+      className={({ isActive }) => (isActive ? " active" : "")}
     >
       Movies
     </NavigationLink>

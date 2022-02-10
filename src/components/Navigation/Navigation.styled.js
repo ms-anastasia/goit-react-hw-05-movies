@@ -9,4 +9,8 @@ export const NavigationLink = styled(NavLink)`
   color: #2a363b;
   font-size: 18px;
   margin-left: 30px;
+
+  &.active {
+    color: #4caf50;
+  }
 `;

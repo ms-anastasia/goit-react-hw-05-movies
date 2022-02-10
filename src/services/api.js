@@ -1,19 +1,19 @@
 const BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = "f4a11e197d605aa881cfd3a8718b9d77";
 
-export function fetchPopularFilms(page) {
-  return fetch(
-    `${BASE_URL}/trending/all/day?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false`
-  ).then((response) => {
-    if (!response.ok) {
-      throw new Error("Something went wrong");
+export function fetchPopularFilms() {
+  return fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`).then(
+    (response) => {
+      if (!response.ok) {
+        throw new Error("Something went wrong");
+      }
+      return response.json();
     }
-    return response.json();
-  });
+  );
 }
-export function fetchFilms(page, request) {
+export function fetchFilms(request) {
   return fetch(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${request}`
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${request}`
   ).then((response) => {
     if (!response.ok) {
       throw new Error("Something went wrong");
@@ -43,7 +43,7 @@ export function fetchActors(filmId) {
 }
 export function fetchReviews(filmId) {
   return fetch(
-    `${BASE_URL}/movie/${filmId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
+    `${BASE_URL}/movie/${filmId}/reviews?api_key=${API_KEY}&language=en-US`
   ).then((response) => {
     if (!response.ok) {
       throw new Error("Something went wrong");

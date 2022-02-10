@@ -2,7 +2,14 @@ import { fetchFilmInfo } from "../../services/api";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link, Outlet } from "react-router-dom";
-import { BackButton, FilmTitle, FilmContainer, Poster, MainFilmInfo, FilmInfo } from "./FilmInfo.styled";
+import {
+  BackButton,
+  FilmTitle,
+  FilmContainer,
+  Poster,
+  MainFilmInfo,
+  FilmInfo,
+} from "./FilmInfo.styled";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -27,11 +34,11 @@ const MovieDetailsPage = () => {
       <BackButton onClick={() => navigate(-1)}> Back </BackButton>
       {movie && (
         <FilmContainer>
-            <FilmTitle>{movie.original_title}</FilmTitle>
-            
-            <MainFilmInfo>
-              <Poster src={imgURL}></Poster>
-              <FilmInfo>
+          <FilmTitle>{movie.original_title}</FilmTitle>
+
+          <MainFilmInfo>
+            <Poster src={imgURL}></Poster>
+            <FilmInfo>
               <p>Vote Average: {movie.vote_average}</p>
               <h4>Overview</h4>
               <p>{movie.overview}</p>
@@ -42,9 +49,9 @@ const MovieDetailsPage = () => {
                     <li key={index}>{genre.name}</li>
                   ))}
                 </ul>
-                )}
-                </FilmInfo>
-            </MainFilmInfo>
+              )}
+            </FilmInfo>
+          </MainFilmInfo>
 
           <div>
             <h4>Additional Information</h4>

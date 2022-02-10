@@ -32,9 +32,6 @@ export default function SearchBar({ onSubmit }) {
   return (
     <SearchHeader>
       <SearchForm onSubmit={handleSubmit}>
-        <SearchButton type="submit">
-          <SearchLabel>Search</SearchLabel>
-        </SearchButton>
         <SearchInput
           type="text"
           autoComplete="off"
@@ -43,6 +40,9 @@ export default function SearchBar({ onSubmit }) {
           value={request}
           onChange={handleNameChange}
         />
+        <SearchButton type="submit">
+          <SearchLabel>Search</SearchLabel>
+        </SearchButton>
       </SearchForm>
     </SearchHeader>
   );

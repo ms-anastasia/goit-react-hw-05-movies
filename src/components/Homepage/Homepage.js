@@ -5,22 +5,17 @@ import { GalleryHeader } from "../FilmView/FilmView.styled";
 
 const Homepage = () => {
   const [popularfilms, setPopularFilms] = useState([]);
-  const [page, setPage] = useState(1);
-
-  const onLoadMoreClick = () => {
-    setPage((s) => s + 1);
-  };
 
   useEffect(() => {
-    fetchPopularFilms(page).then((data) =>
+    fetchPopularFilms().then((data) =>
       setPopularFilms((state) => [...state, ...data.results])
     );
-  }, [page]);
-  return ( 
+  }, []);
+  return (
     <>
-  <GalleryHeader>Trending Movies</GalleryHeader>
-      <FilmView films={popularfilms} onClick={onLoadMoreClick} />;
-      </>
-  )
+      <GalleryHeader>Trending Movies</GalleryHeader>
+      <FilmView films={popularfilms} />;
+    </>
+  );
 };
 export default Homepage;

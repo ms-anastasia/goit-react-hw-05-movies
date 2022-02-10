@@ -20,7 +20,7 @@ export const CastItem = styled.li`
 `;
 
 export const CastImage = styled.img`
-width: 200px;
+  width: 200px;
   height: 300px;
   object-fit: cover;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
